@@ -1,0 +1,17 @@
+1. Efetue a transformação de binário para decimal ou vice-versa:
+
+a. 33 → 100001
+
+b. 18 → 10010
+
+c. 5 → 101
+
+d. 24 → 11000
+
+e. 00000110 → 6
+
+f. 01100100 → 100
+
+g. 00011001 → 25
+
+h. 00000010 → 2
