@@ -1,4 +1,4 @@
-1. Efetue a transformação de binário para decimal ou vice-versa:
+Exercício 1 - Efetue a transformação de binário para decimal ou vice-versa:
 
 a. 33 → 100001
 

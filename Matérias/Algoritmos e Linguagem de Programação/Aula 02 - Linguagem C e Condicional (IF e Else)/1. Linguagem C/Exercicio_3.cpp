@@ -1,4 +1,4 @@
-// Faça um programa para receber um número inteiro representando segundos e imprimir a quantidade correspondente em horas, minutos e segundos.
+// Exercício 3 - Faça um programa para receber um número inteiro representando segundos e imprimir a quantidade correspondente em horas, minutos e segundos.
 
 #include <iostream>
 using namespace std;

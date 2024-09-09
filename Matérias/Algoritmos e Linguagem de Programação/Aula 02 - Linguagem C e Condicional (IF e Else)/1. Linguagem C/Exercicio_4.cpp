@@ -1,4 +1,4 @@
-// Construa um programa que leia o salário mensal atual de um funcionário e o percentual de reajuste. Determine o valor do novo salário e imprima os valores lidos e o novo salário.
+// Exercício 4 - Construa um programa que leia o salário mensal atual de um funcionário e o percentual de reajuste. Determine o valor do novo salário e imprima os valores lidos e o novo salário.
 
 #include <iostream>
 using namespace std;

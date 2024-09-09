@@ -1,4 +1,4 @@
-// 2. Suponha que o valor de uma certa variável inteira A = 5 e de uma variável B = 13. Como poderíamos trocar o valor dessas variáveis, ou seja, A = 13 e B = 5?
+// Exercício 2 - Suponha que o valor de uma certa variável inteira A = 5 e de uma variável B = 13. Como poderíamos trocar o valor dessas variáveis, ou seja, A = 13 e B = 5?
 
 // RESOLUÇÃO
 
