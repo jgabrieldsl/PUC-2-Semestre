@@ -1,0 +1,1 @@
+// Exercício 3 - (Desafio) Um usuário deseja utilizar um sistema protegido por senha. Ele tem 3 tentativas para acertar a senha correta. Defina uma senha (tipo int) e faça um programa que solicite a senha do usuário. Enquanto ele não acertar, o programa deverá imprimir "Acesso negado". Caso contrário, deverá imprimir "Acesso liberado".

@@ -1,0 +1,1 @@
+// Exercício 2 - Fazer  um  programa  que  faz  a  leitura  de  um  vetor  X,  com  N inteiros, com tamanho máximo igual a 20 e  N deverá ser lido. Gera um segundo vetor com os valores de vetor lido em ordem inversa.  Imprimir  o  vetor  lido  e  vetor  com  a  ordem  inversa.

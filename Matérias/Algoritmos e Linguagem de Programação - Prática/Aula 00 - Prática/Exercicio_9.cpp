@@ -1,0 +1,2 @@
+// Exercício 9 - Elabore um programa que faça a simulação de um caixa de uma loja. O usuário deverá digitar o Valor da Compra, o Valor Pago pelo cliente. O programa irá retornar o valor do troco, as cédulas que fazem parte do troco e a quantidade de cada cédula. Para este programa considere as cédulas de R$20, R$10, R$5 e R$1 real Considere a possibilidade de não haver troco Veja o Exemplo na próxima página
+
