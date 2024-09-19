@@ -8,4 +8,9 @@ Exercício 1 - Construa um programa que seja constituído das seguintes funçõe
 
 */
 
-Matérias/Algoritmos e Linguagem de Programação/Aula 13 - Funções por referência (Ponteiros)/Exercicio_1.cpp
+#include <iostream>
+
+int main() {
+    std::cout << "Exercício 1" << std::endl;
+    return 0;
+}
