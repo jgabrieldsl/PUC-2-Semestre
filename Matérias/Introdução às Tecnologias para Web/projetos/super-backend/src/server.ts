@@ -6,6 +6,20 @@ const port = 3000;
 const server = express();
 const routes = Router();
 
+type UserAccount = {
+    name: string;
+    email: string;
+    password: string;
+    birthdate: string;
+};
+
+let accountsDatabase: UserAccount[] = []; 
+
+function saveNewAccount(ua: UserAccount) {
+    accountsDatabase.push (ua);
+    return accountsDatabase.length;
+} 
+
 // Definindo rotas
 
 // Rota default 
@@ -22,12 +36,20 @@ routes.put('/signUp', (req: Request, res: Response) => {
     const pBirthdate = req.get('birthdate');
 
     if (pName && pEmail && pPassword && pBirthdate) {
-        // Proseeguir com o cadastro.
+        const newAccount: UserAccount = {
+            name: pName,
+            email: pEmail,
+            password: pPassword,
+            birthdate: pBirthdate
+        }
+        const ID = saveNewAccount(newAccount);
+        res.statusCode = 200;
+        res.send(`Nova conta adicionada: ${ID}`)
+
     } else {
         res.statusCode = 400;
         res.send('Parâmetros inválidos ou faltantes.');
     }
-    
 });
 
 server.use(routes);
