@@ -1,0 +1,21 @@
+{
+  "name": "super-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node build/src/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "mysql":"^2.18.1"
+  },
+  "devDependencies": {
+    "@types/mysql": "2.15.26",
+    "@types/node": "^22.5.5",
+    "typescript": "^5.6.2"
+  }
+}
