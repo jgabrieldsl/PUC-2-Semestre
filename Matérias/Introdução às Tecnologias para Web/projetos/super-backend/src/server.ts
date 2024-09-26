@@ -9,7 +9,8 @@ const routes = Router();
 // Definindo rotas
 
 // Rota default 
-routes.post ('/', (req: Request, res: Response) => {
+routes.get ('/', (req: Request, res: Response) => {
+    res.statusCode = 403;
     res.send ('Olá!');
 });
 
