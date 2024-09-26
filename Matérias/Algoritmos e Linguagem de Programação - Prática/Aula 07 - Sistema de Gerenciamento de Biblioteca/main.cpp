@@ -50,40 +50,40 @@ void cadastrar_livros(struct livro dados[], int *quant_cadastro) {
 int main () {
     struct livro vetLivros[100];
     int qtd = 0;
+    int opt;
+    do  {
+        cout << "Bem vindo ao Sistema de Gerenciamento de Biblioteca!" << endl << endl;
+        cout << "1. Cadastro de livros" << endl;    
+        cout << "2. Consultar livros" << endl;    
+        cout << "3. Emprestar livro" << endl;    
+        cout << "4. Devolução de livros" << endl;    
+        cout << "5. Remoção de livros" << endl;   
+        cout << "6. Sair do programa;" << endl;
+        cin >> opt;
 
-    while (true) {
-        int opt;
-        
-        do  {
-            cout << "/t Bem vindo ao Sistema de Gerenciamento de Biblioteca! /n /n";
-            cout << "1. Cadastro de livros" << endl;    
-            cout << "2. Consultar livros" << endl;    
-            cout << "3. Emprestar livro" << endl;    
-            cout << "4. Devolução de livros" << endl;    
-            cout << "5. Remoção de livros" << endl;   
-            cout << "6. Sair do programa;" << endl;
-            cin >> opt;
-            
-            switch (opt) {
-                case 1:
-                    cadastrar_livros (vetLivros, &qtd);    
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-                case 5:
-                    break;
-                case 6:
-                    break;
-                default:
-                    break;
-            }
+        switch (opt) {
+            case 1:
+                cin.ignore();
+                cadastrar_livros (vetLivros, &qtd);    
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            default:
+                cout << "Opção inválida!";
+                break;
+        }
 
-            cout << endl;
-        
-        } while (opt != 6);
-    }
+        cout << endl;
+    
+    } while (opt != 6);
+
+    return 0;
 }
