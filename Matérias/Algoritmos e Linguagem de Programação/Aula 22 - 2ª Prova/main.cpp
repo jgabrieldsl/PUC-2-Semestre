@@ -1,3 +1,5 @@
+// Exercício não finalizado, estou fazendo basicamente o que eu fiz na prova.
+
 #include <iostream>
 #include <string>
 using namespace std;
@@ -52,7 +54,6 @@ int main () {
         } else if (opt == 0) {
             break;
         }
-
     }
 
     return 0;
