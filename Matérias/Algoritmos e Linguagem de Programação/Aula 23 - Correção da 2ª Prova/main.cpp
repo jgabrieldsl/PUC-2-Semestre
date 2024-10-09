@@ -1,114 +1,116 @@
-// Código feito pelo professor
-
 #include <iostream>
 using namespace std;
 
-struct func {
-  int id;
-  char nome[50];
-  float salario;
-  int idade;
+struct Func {
+    int id;
+    char nome[50];
+    float salario;
+    int idade;
 };
 
-void PrintFunc(struct func F) {
-  cout << "Nome: " << F.nome << endl;
-  cout << "id: " << F.id << endl;
-  cout << "salario: " << F.salario << endl;
-  cout << "idade: " << F.idade << endl;
-  cout << "////////////////////////////";
+void PrintFunc(struct Func& F) {
+    cout << "Nome: " << F.nome << endl;
+    cout << "ID: " << F.id << endl;
+    cout << "Salário: " << F.salario << endl;
+    cout << "Idade: " << F.idade << endl;
+    cout << "////////////////////////////" << endl;
 }
 
-void Cadastrar(struct func F[], int * pos) {
-
-  cout << "Nome: ";
-  cin.getline(F[ * pos].nome, 50);
-
-  cout << "id: ";
-  cin >> F[ * pos].id;
-
-  cout << "salario: ";
-  cin >> F[ * pos].salario;
-
-  cout << "idade: ";
-  cin >> F[ * pos].idade;
-
-  ( * pos) ++;
-
-}
-
-void PrintFuncVet(struct func F[], int sz) {
-  for (int i = 0; i < sz; i++) PrintFunc(F[i]); // utiliza a primeira função criada para imprimir
-}
-
-void AumentaSalario(struct func F[], int id, int sz, float percentual) {
-  for (int i = 0; i < sz; i++) {
-    if (F[i].id == id) {
-      F[i].salario *= (1 + percentual / 100);
-      return; //apenas para sair, pode usar um "brake"
+void PrintFuncVet(struct Func F[], int sz) {
+    for (int i = 0; i < sz; i++) {
+        PrintFunc(F[i]);
     }
-  }
 }
 
-void ExibirAcima(struct func F[], int sz, float val) {
-
-  for (int i = 0; i < sz; i++) {
-
-    if (F[i].salario > val) PrintFunc(F[i]);
-
-  }
+void ExibirAcima(Func F[], int sz, float val) {
+    for (int i = 0; i < sz; i++) {
+        if (F[i].salario > val) {
+            PrintFunc(F[i]);
+        }
+    }
 }
 
-void MediaSal(struct func F[], int sz) {
+void Cadastrar(Func F[], int *pos) {
+    cout << "Nome: ";
+    cin.ignore();
+    cin.getline(F[*pos].nome, 50);
 
-  float soma = 0;
+    cout << "ID: ";
+    cin >> F[*pos].id;
 
-  for (int i = 0; i < sz; i++) soma += F[i].salario;
+    cout << "Salário: ";
+    cin >> F[*pos].salario;
 
-  float media = soma / float(sz); //transforma "sz" que foi declarado int para float
+    cout << "Idade: ";
+    cin >> F[*pos].idade;
 
-  cout << "A media salarial eh " << media << endl;
+    *pos++;
+}
+
+void AumentaSalario(Func F[], int sz, int id, float percentual) {
+    for (int i = 0; i < sz; i++) {
+        if (F[i].id == id) {
+            F[i].salario *= (1 + percentual / 100);
+            return;
+        }
+    }
+}
+
+void MediaSal(struct Func F[], int sz) {
+    if (sz == 0) {
+        cout << "Nenhum funcionário cadastrado." << endl;
+        return;
+    }
+
+    float soma = 0;
+    for (int i = 0; i < sz; i++) {
+        soma += F[i].salario;
+    }
+
+    float media = soma / sz; // Não precisa converter sz para float, a divisão já resulta em float
+
+    cout << "A média salarial é " << media << endl;
 }
 
 int main() {
-  struct func funcvec[100];
+    Func funcvec[100];
+    int qnt = 0, opt = 0;
 
-  int qnt = 0, opt = 0;
+    while (opt != 6) {
+        cout << "Digite a opção desejada (1 - Cadastrar, 2 - Listar, 3 - Aumentar Salário, 4 - Exibir Acima, 5 - Média Salarial, 6 - Sair): ";
+        cin >> opt;
 
-  while (opt != 6) {
-
-    cout << "Digite a opção desejada: ";
-    cin >> opt;
-
-    switch (opt) {
-
-    case 1: {
-      Cadastrar(funcvec, &qnt);
-      break;
+        switch (opt) {
+            case 1:
+                Cadastrar(funcvec, &qnt);
+                break;
+            case 2:
+                PrintFuncVet(funcvec, qnt);
+                break;
+            case 3: {
+                int id;
+                float perc;
+                cout << "Digite o ID e o percentual de aumento: ";
+                cin >> id >> perc;
+                AumentaSalario(funcvec, qnt, id, perc);
+                break;
+            }
+            case 4: {
+                float valor;
+                cout << "Digite o valor: ";
+                cin >> valor;
+                ExibirAcima(funcvec, qnt, valor);
+                break;
+            }
+            case 5:
+                MediaSal(funcvec, qnt);
+                break;
+            case 6:
+                cout << "Saindo..." << endl;
+                break;
+            default:
+                cout << "Opção inválida. Tente novamente." << endl;
+        }
     }
-    case 2: {
-      PrintFuncVet(funcvec, qnt);
-      break;
-    }
-
-    case 3: {
-      int id;
-      float perc;
-      cout << "Digite o id e o percentual de aumento: ";
-      cin >> id >> perc;
-      AumentaSalario(funcvec, qnt, id, perc);
-      break;
-    }
-    case 4: {
-      float valor;
-      cin >> valor;
-      ExibirAcima(funcvec, qnt, valor);
-      break;
-    }
-    case 5: {
-      MediaSal(funcvec, qnt);
-      break;
-    }
-    }
-  }
-  return 0;
+    return 0;
 }
