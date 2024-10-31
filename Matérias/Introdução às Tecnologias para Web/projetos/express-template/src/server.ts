@@ -1,6 +1,7 @@
 import express from "express";
 import {Request, Response, Router} from "express";
 import { AccountsManager } from "./accounts/accounts";
+import { FinancialManager } from "./financial/financial";
 
 const port = 3000; 
 const server = express();
@@ -14,7 +15,8 @@ routes.get('/', (req: Request, res: Response) => {
 
 // Vamos organizar as rotas em outro local 
 routes.put('/signUp', AccountsManager.signUpHandler);
-routes.post('/getWalletBalance', getWalletBalanceHandler);
+routes.post('/getWalletBalance', FinancialManager.getWalletBalanceHandler);
+routes.post ('/login', AccountsManager.loginHandler) 
 
 server.use(routes);
 
