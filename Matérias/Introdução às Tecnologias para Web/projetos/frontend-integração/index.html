@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Front-end Integration</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1>Login Form</h1>
+        <form action="" method="post">
+            <p>
+                <label for="fEmail">Email:</label>
+                <input type="text" onfocus="hideError()" id="fEmail">
+            </p>
+            <p>
+                <label for="fPassword">Password:</label>
+                <input type="password" onfocus="hideError()" id="fPassword">
+            </p>
+            <button type="button" id="btnSignIn" onclick="signIn()">Sign In</button>
+        </form>
+
+        <div id="messageBox" style="display: none;">
+            <p id="message"></p>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
