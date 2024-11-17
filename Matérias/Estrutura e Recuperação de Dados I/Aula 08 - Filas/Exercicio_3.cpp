@@ -21,33 +21,38 @@ struct queue {
 };
 
 /* Inserting Number in Queue*/
+void insertIntoQueue (queue* q, int value) {
+    /* Criando um novo nó na fila recebida*/
+    number* newNumber = new number();
+    newNumber -> value = value;
+    newNumber -> nextNumber = nullptr;
+
+    /* Verificando se a lista recebida está vazia*/
+    if (q -> lastNumber == nullptr) {
+        q -> firstNumber = newNumber;
+    } else {
+        q -> lastNumber -> nextNumber = newNumber;
+    }
+    q -> lastNumber = newNumber;
+}
+
 void insertNumber(queue* q) {
-    system("cls");
+    system("clear");
     cout << "==== Inserting Value in the Number Queue ====" << endl << endl;
     /* Input value */
     int value;
     cout << "Insert the Number: ";
     cin >> value;
 
-    /* */
-    number* newNumber = new number();
-    newNumber -> value = value;
-    newNumber -> nextNumber = nullptr; // NewNumber sempre aponta para null, pois é o último da fila;
-
-    /* Verificando se a lista está vazia */
-    if (q -> lastNumber == nullptr) { // Sim? O primeiro será igual ao novo número que seria adicionado ao final.
-        q -> firstNumber = newNumber;
-    } else { // Não? Então o atual último vai apontar para newNumber
-        q -> lastNumber -> nextNumber = newNumber;
-    }
-
-    q -> lastNumber = newNumber;
-
+    insertIntoQueue (q, value);
     cout << "Number added to queue successfully!" << endl << endl;
 }
 
+/* Inserting Number in Queue End*/
+
+/* Split Numbers (Main Function) */
 void splitQueue (queue* q, queue* qEven, queue* qOdd) {
-    system("cls");
+    system("clear");
     cout << "==== Split Values in the Number Queue ====" << endl << endl;
 
     number* currentNumber = q -> firstNumber;
@@ -55,35 +60,11 @@ void splitQueue (queue* q, queue* qEven, queue* qOdd) {
     while (currentNumber != nullptr) {
 
         if (currentNumber -> value % 2 == 0) {
-            /* Criando um novo nó em EvenQueue*/
-            number* newEvenNumber = new number();
-            newEvenNumber -> value = currentNumber -> value;
-            newEvenNumber -> nextNumber = nullptr;
-            
-            /* Verificando se a lista está vazia*/
-            if (qEven -> lastNumber == nullptr) {
-                qEven -> firstNumber = newEvenNumber;
-            } else {
-                qEven -> lastNumber -> nextNumber = newEvenNumber;
-            }
-            qEven -> lastNumber = newEvenNumber;
-            cout << "Number: " << newEvenNumber -> value << " adicionado a lista de número pares! " << endl;
-
-        }
-        
-        if (currentNumber -> value % 2 != 0) {
-            /* Criando um novo nó em oddQueue*/
-            number* newOddNumber = new number();
-            newOddNumber -> value = currentNumber -> value;
-            newOddNumber -> nextNumber = nullptr;
-
-            if (qOdd -> lastNumber == nullptr) {
-                qOdd -> firstNumber = newOddNumber;
-            } else {
-                qOdd -> lastNumber -> nextNumber = newOddNumber;
-            }
-            qOdd -> lastNumber = newOddNumber;
-            cout << "Number: " << newOddNumber -> value << " adicionado a lista de números impares! " << endl;
+            insertIntoQueue (qEven, currentNumber -> value);
+            cout << "Number: " << currentNumber -> value << " adicionado a lista de número pares! " << endl;
+        } else {
+            insertIntoQueue (qOdd, currentNumber -> value);
+            cout << "Number: " << currentNumber -> value << " adicionado a lista de números impares! " << endl;
         }
         currentNumber = currentNumber -> nextNumber;
     }
@@ -93,7 +74,8 @@ void splitQueue (queue* q, queue* qEven, queue* qOdd) {
 
 /* Print Queue*/
 void printQueue (queue* qNumber, string queueName) {
-    system("cls");
+    system("clear");
+    cout << "==== Print Values in the Queue ====" << endl << endl;
     number* currentNumber = qNumber -> firstNumber;
     if (currentNumber == nullptr) {
         cout << "The queue is empty!" << endl;
@@ -109,6 +91,7 @@ void printQueue (queue* qNumber, string queueName) {
     cout << "--------------" << endl;
 }
 
+/* Free Memory alocated for Queue's */
 void freeQueue (queue* q) {
     number* currentNumber = q -> firstNumber;
     while (currentNumber != nullptr) {
