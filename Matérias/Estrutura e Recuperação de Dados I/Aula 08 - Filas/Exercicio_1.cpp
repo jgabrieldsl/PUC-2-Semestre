@@ -1,5 +1,4 @@
-/* Exercise 1 - Write a function that counts how many even numbers there are in a row and returns that amount. */
-/* I created this function to remove any number chosen by the user!*/
+/* Exercise 1 - Escreva uma função que conte quantos números pares existem em uma fila e retorne essa quantidade. */
 
 #include <iostream>
 using namespace std;
@@ -15,7 +14,7 @@ struct queue {
 };
 
 void insertNumber (queue* q) {
-    system("clear");
+    system("cls");
     cout << "==== Inserting Value in the Number Queue ====" << endl << endl;
     /* Input value */
     int value;
@@ -38,7 +37,7 @@ void insertNumber (queue* q) {
 
 /* Evem Numbers Count '*/
 int evenNumbers (queue* q) {
-    system("clear");
+    system("cls");
     int cont = 0;
     number* currentNumber = q -> firstNumber;
     while ( currentNumber != nullptr ) {
@@ -48,63 +47,6 @@ int evenNumbers (queue* q) {
 
     cout << "Even Numbers in the Queue: " << cont << endl << endl;;
     return cont;    
-}
-
-void removeValue (queue* q) {
-    int value;
-    cout << "Remove the number: ";
-    cin >> value;
-    number* prevNumber = nullptr;
-    number* currentNumber = q -> firstNumber;
-    while (currentNumber != nullptr) { 
-        if (currentNumber -> value == value) { 
-            /* Caso o valor esteja no inicio da fila...*/
-            if (prevNumber == nullptr) {
-                q -> firstNumber = currentNumber -> nextNumber; // O primeiro elemento passa a ser igual ao segundo
-
-                /* Primeiro elemento fica nulo? Quer dizer que a fila está vazia e define o último como nulo também */
-                if (q -> firstNumber == nullptr) {
-                    q -> lastNumber = nullptr;
-                }
-                
-                delete currentNumber; // Libera o espaço na memória do atual currentNumber
-                currentNumber = q -> firstNumber; // CurrentNumber passa a ser o próximo elemento da fila.
-            
-            
-            } else { /* Caso o valor esteja no meio da fila...*/
-                prevNumber -> nextNumber = currentNumber -> nextNumber; // O elemento anterior passa a apontar para o próximo elemento do atual elemento.
-                
-                /* Caso o valor sejá o último da fila */
-                if (q -> lastNumber == currentNumber) {
-                    q -> lastNumber = prevNumber; // Define o último como o anterior ao elemento que está sendo removido
-                    q -> lastNumber -> nextNumber = nullptr; // Aponta-o para nullptr, satisfazendo a regra.
-                }
-
-                delete currentNumber; // Liberando o espaço na memória reservado para o atual currentNumber
-                currentNumber = prevNumber -> nextNumber; // Passando para o próximo elemento, leia o código para entender pq: 'prevNumber -> nextNumber' ao invés de 'currentNumber -> nextNumber'.
-            }   
-        } else {
-            prevNumber = currentNumber;
-            currentNumber = currentNumber -> nextNumber; // Passando para o próximo nó
-        }
-    }
-}
-
-/* Print on the screen customers who are in the queue */
-void printQueue(queue* q) {
-    system("clear"); // or clear for macOS/Linux
-    number* currentNumber = q -> firstNumber;
-    if (currentNumber == nullptr) {
-        cout << "The Queue is empty!" << endl << endl;;
-        return;
-    }
-
-    cout << "Numbers in queue: " << endl << endl;
-    while (currentNumber != nullptr) {
-        cout << "Number: " << currentNumber -> value << endl;
-        currentNumber = currentNumber -> nextNumber;
-    }
-    cout << "------------------------- " << endl << endl;
 }
 
 /* */
@@ -129,11 +71,9 @@ int main() {
     int choice;
     do {
         cout << "Welcome to the Adding Number System!" << endl << endl;
-        cout << "1. Add number." << endl;
-        cout << "2. How many even numbers are there in the queue?." << endl;
-        cout << "3. Remove value from queue. (Main function)" << endl;
-        cout << "4. Print Queue." << endl;
-        cout << "5. Exit. " << endl << endl;
+        cout << "1. Add number" << endl;
+        cout << "2. How many even numbers are there in the queue?" << endl;
+        cout << "3. Exit" << endl << endl;
         cout << "Choose an option: ";
         cin >> choice;
         
@@ -145,17 +85,11 @@ int main() {
                 evenNumbers(newNumber);
                 break;
             case 3:
-                removeValue(newNumber);
-                break;
-            case 4:
-                printQueue(newNumber);
-                break;
-            case 5:
                 freeQueue(newNumber);
                 delete newNumber;
                 return 0;
             default:
                 cout << "Invalid choice! Try again..." << endl;
         }
-    } while (choice != 5);
+    } while (choice != 4);
 }
