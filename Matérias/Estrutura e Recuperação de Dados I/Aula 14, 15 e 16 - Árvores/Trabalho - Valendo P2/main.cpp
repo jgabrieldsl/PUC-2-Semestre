@@ -4,7 +4,6 @@
 
 using namespace std;
 
-// Estrutura que representa um contato na árvore binária
 struct Contato {
     char nome[50];          // Nome do contato
     char celular[15];      // Celular do contato
@@ -16,7 +15,7 @@ int compararNomes(const char* nome1, const char* nome2) {
     return strcmp(nome1, nome2);
 }
 
-// Função para inserir um novo contato na árvore binária
+// inserir contato
 Contato* inserir(Contato* raiz, Contato* novo) {
     if (raiz == nullptr) { // posição encontrada para inserção
         return novo;
